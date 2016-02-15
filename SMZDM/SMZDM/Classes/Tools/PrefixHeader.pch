@@ -1,0 +1,17 @@
+//
+//  PrefixHeader.pch
+//  SMZDM
+//
+//  Created by 王天奇 on 16/2/9.
+//  Copyright © 2016年 王天奇. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define ScreenSize [UIScreen mainScreen].bounds
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+#define StatusBarHeight 20
+
+#endif /* PrefixHeader_pch */
