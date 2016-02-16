@@ -51,6 +51,7 @@
     childController.tabBarItem.selectedImage = [[UIImage imageNamed:[imgName stringByAppendingString:@"Selected"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor redColor]} forState:UIControlStateSelected];
+    [childController.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor grayColor]} forState:UIControlStateNormal];
     
     if (hasNvai) {
         SMNavigationController *navigationVc = [[SMNavigationController alloc] initWithRootViewController:childController];

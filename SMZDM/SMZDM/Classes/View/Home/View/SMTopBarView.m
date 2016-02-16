@@ -36,7 +36,7 @@
     for (int i = 0; i < 6; i++) {
         UIButton *btn = [[UIButton alloc] init];
         [btn.titleLabel setFont:[UIFont systemFontOfSize:16]];
-        [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         [btn setTitle:arr[i] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(selectTopBarBtn:) forControlEvents:UIControlEventTouchDown];

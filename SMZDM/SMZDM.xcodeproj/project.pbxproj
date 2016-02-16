@@ -10,8 +10,6 @@
 		2178337A1C60E91D003D9D6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 217833791C60E91D003D9D6D /* main.m */; };
 		2178337D1C60E91D003D9D6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2178337C1C60E91D003D9D6D /* AppDelegate.m */; };
 		217F3DC31C6A0EBC004E265D /* SMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DC21C6A0EBC004E265D /* SMNavigationController.m */; };
-		217F3DC71C6F5C72004E265D /* SMTopBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DC61C6F5C72004E265D /* SMTopBarController.m */; };
-		217F3DCA1C6F60ED004E265D /* SMHomeCollectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DC91C6F60ED004E265D /* SMHomeCollectionController.m */; };
 		217F3DCD1C6FFE8A004E265D /* SMTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DCC1C6FFE8A004E265D /* SMTopBarView.m */; };
 		217F3DD01C700B83004E265D /* SMHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DCF1C700B83004E265D /* SMHomeView.m */; };
 		21BE93591C61E722007CB5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BE93581C61E722007CB5DF /* Assets.xcassets */; };
@@ -38,10 +36,6 @@
 		217F3DB31C69E711004E265D /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		217F3DC11C6A0EBC004E265D /* SMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMNavigationController.h; sourceTree = "<group>"; };
 		217F3DC21C6A0EBC004E265D /* SMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMNavigationController.m; sourceTree = "<group>"; };
-		217F3DC51C6F5C72004E265D /* SMTopBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTopBarController.h; sourceTree = "<group>"; };
-		217F3DC61C6F5C72004E265D /* SMTopBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTopBarController.m; sourceTree = "<group>"; };
-		217F3DC81C6F60ED004E265D /* SMHomeCollectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeCollectionController.h; sourceTree = "<group>"; };
-		217F3DC91C6F60ED004E265D /* SMHomeCollectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeCollectionController.m; sourceTree = "<group>"; };
 		217F3DCB1C6FFE8A004E265D /* SMTopBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTopBarView.h; sourceTree = "<group>"; };
 		217F3DCC1C6FFE8A004E265D /* SMTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTopBarView.m; sourceTree = "<group>"; };
 		217F3DCE1C700B83004E265D /* SMHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeView.h; sourceTree = "<group>"; };
@@ -200,10 +194,6 @@
 				217F3DC41C6F5BBE004E265D /* View */,
 				21BE935E1C62003B007CB5DF /* SMHomeController.h */,
 				21BE935F1C62003B007CB5DF /* SMHomeController.m */,
-				217F3DC51C6F5C72004E265D /* SMTopBarController.h */,
-				217F3DC61C6F5C72004E265D /* SMTopBarController.m */,
-				217F3DC81C6F60ED004E265D /* SMHomeCollectionController.h */,
-				217F3DC91C6F60ED004E265D /* SMHomeCollectionController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -397,7 +387,6 @@
 				217F3DC31C6A0EBC004E265D /* SMNavigationController.m in Sources */,
 				21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */,
 				21BE936C1C63409D007CB5DF /* SMTabBar.m in Sources */,
-				217F3DCA1C6F60ED004E265D /* SMHomeCollectionController.m in Sources */,
 				21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */,
 				21BE93691C620851007CB5DF /* SMProfileController.m in Sources */,
 				2178337D1C60E91D003D9D6D /* AppDelegate.m in Sources */,
@@ -405,7 +394,6 @@
 				21FAA06C1C70C65F00E7F239 /* UIView+Frame.m in Sources */,
 				217F3DCD1C6FFE8A004E265D /* SMTopBarView.m in Sources */,
 				21BE93631C620735007CB5DF /* SMDiscoveryController.m in Sources */,
-				217F3DC71C6F5C72004E265D /* SMTopBarController.m in Sources */,
 				21FAA0681C70A44100E7F239 /* SMTopBarBottomView.m in Sources */,
 				21BE93601C62003B007CB5DF /* SMHomeController.m in Sources */,
 				2178337A1C60E91D003D9D6D /* main.m in Sources */,
