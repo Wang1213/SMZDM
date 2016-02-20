@@ -25,6 +25,8 @@
     
     [self setupUI];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiSelect:) name:NotificationdidScelectTopBarButton object:nil];
+    
     return self;
 }
 
@@ -36,9 +38,7 @@
 }
 
 - (void)dealloc{
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
 }
 
 - (void)setupUI{
@@ -89,15 +89,21 @@
 
 - (void)selectTopBarBtn:(UIButton *)btn{
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationClickTopBarButton object:@"Click"];
-    
+    //[[NSNotificationCenter defaultCenter] postNotificationName:NotificationClickTopBarButton object:@"Click"];
     self.currentBtn.selected = NO;
     self.currentBtn = btn;
     btn.selected = YES;
-    
     CGFloat scrollProportionFlt = (btn.frame.origin.x)/SelfWidth;
     NSString *scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationScrollHomeColViewPage object:scrollProportionStr];
+}
+
+- (void)notiSelect:(NSNotification *)noti{
+    NSString *tagStr = noti.object;
+    NSInteger tagInt = [tagStr integerValue];
+    self.currentBtn.selected = NO;
+    self.currentBtn = self.btnArray[tagInt];
+    self.currentBtn.selected = YES;
 }
 
 @end

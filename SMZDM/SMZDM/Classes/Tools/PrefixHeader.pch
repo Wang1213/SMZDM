@@ -19,6 +19,7 @@
 #define NotificationMoveToNextTopBarBtn @"NotificationMoveToNextTopBarBtn"
 #define NotificationScrollHomeColViewPage @"NotificationScrollHomeColViewPage"
 #define NotificationClickTopBarButton @"NotificationClickTopBarButton"
+#define NotificationdidScelectTopBarButton @"NotificationdidScelectTopBarButton"
 #define TopBarButtonClick @"Click"
 
 #endif /* PrefixHeader_pch */

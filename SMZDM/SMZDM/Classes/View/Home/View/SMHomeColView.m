@@ -17,7 +17,7 @@
 
 @interface SMHomeColView()<UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 
-@property (nonatomic, assign) BOOL isClick;
+//@property (nonatomic, assign) BOOL isClick;
 
 @end
 
@@ -55,35 +55,44 @@
     return cell;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    NSLog(@"...");
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+    
+    NSInteger offsetInt = self.contentOffset.x;
+    NSString *widthStr = [NSString stringWithFormat:@"%f",ScreenWidth];
+    NSInteger widthInt = [widthStr integerValue];
+    NSInteger tag = offsetInt/widthInt - 1;
+    NSString *tagStr = [NSString stringWithFormat:@"%ld", tag];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationdidScelectTopBarButton object:tagStr];
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
     CGFloat scrollProportionFlt = self.contentOffset.x/(ColWidth * NumOfPage);
-    NSLog(@"%f",scrollProportionFlt);
-    
     NSString * scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
-    
+    //if (!self.isClick) {
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationMoveToNextTopBarBtn object:scrollProportionStr];
-    
+    //}
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-    self.isClick = NO;
+    //self.isClick = NO;
 }
 
 - (void)scrollHomeColViewPage:(NSNotification *)noti{
+    
     NSString *scrollProportionStr = noti.object;
     CGFloat scrollProportionFlt = [scrollProportionStr floatValue];
     CGFloat offSetX = scrollProportionFlt * ColWidth * NumOfPage;
     [self setContentOffset:CGPointMake(offSetX, 0) animated:YES];
+    
 }
 
 - (void)topBarButtonDidClick:(NSNotification *)noti{
+    
     if ([noti.object isEqual: TopBarButtonClick]) {
-        [self scrollViewWillBeginDragging:self];
-        self.isClick = YES;
+        //[self scrollViewWillBeginDragging:self];
+        //self.isClick = YES;
     }
 }
 
