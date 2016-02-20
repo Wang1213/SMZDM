@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) UIButton *currentBtn;
 @property (nonatomic, strong) SMTopBarBottomView *topBarBottomView;
+@property (nonatomic, strong) NSMutableArray *btnArray;
 
 @end
 
@@ -25,6 +26,19 @@
     [self setupUI];
     
     return self;
+}
+
+- (NSMutableArray *)btnArray{
+    if (!_btnArray) {
+        _btnArray = [NSMutableArray array];
+    }
+    return _btnArray;
+}
+
+- (void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
 
 - (void)setupUI{
@@ -40,12 +54,13 @@
         [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         [btn setTitle:arr[i] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(selectTopBarBtn:) forControlEvents:UIControlEventTouchDown];
-        //btn.tag = i;
+        btn.tag = i;
         if (i == 0) {
             btn.selected = YES;
             self.currentBtn = btn;
         }
         
+        [self.btnArray addObject:btn];
         [self addSubview:btn];
     }
     
@@ -73,13 +88,16 @@
 }
 
 - (void)selectTopBarBtn:(UIButton *)btn{
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationClickTopBarButton object:@"Click"];
+    
     self.currentBtn.selected = NO;
     self.currentBtn = btn;
     btn.selected = YES;
     
-    if (self.topBarBottomView.bottomIamgeMove) {
-        self.topBarBottomView.bottomIamgeMove(btn.frame.origin.x);
-    }
+    CGFloat scrollProportionFlt = (btn.frame.origin.x)/SelfWidth;
+    NSString *scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationScrollHomeColViewPage object:scrollProportionStr];
 }
 
 @end

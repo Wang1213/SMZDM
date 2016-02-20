@@ -9,6 +9,7 @@
 #import "SMTopBarBottomView.h"
 #import "UIView+Frame.h"
 #import "PrefixHeader.pch"
+#import "SMHomeColView.h"
 
 @implementation SMTopBarBottomView
 
@@ -25,14 +26,26 @@
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.bottomIamgeMove = ^(CGFloat moveToPosition){
-        [UIImageView animateWithDuration:0.2 animations:^{
+        [UIImageView animateWithDuration:0.15 animations:^{
             imgView.x = moveToPosition;
         }];
     };
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToNext:) name:NotificationMoveToNextTopBarBtn object:nil];
+    
     [self addSubview:imgView];
     
     return self;
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)moveToNext:(NSNotification *)noti{
+    NSString *offSetStr = noti.object;
+    CGFloat offSetFlt = [offSetStr floatValue];
+    self.bottomIamgeMove(offSetFlt * SelfWidth);
 }
 
 @end

@@ -7,12 +7,17 @@
 //
 
 #import "SMHomeColView.h"
+#import "PrefixHeader.pch"
+#import "SMTopBarBottomView.h"
 
-#define numOfPage 6
+#define NumOfPage 6
+#define ColWidth self.bounds.size.width
 
 #define HomeColCellID @"HOME_COLLECTION_CELL"
 
 @interface SMHomeColView()<UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+
+@property (nonatomic, assign) BOOL isClick;
 
 @end
 
@@ -28,11 +33,19 @@
     self.bounces = NO;
     self.pagingEnabled = YES;
     [self setBackgroundColor:[UIColor blueColor]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollHomeColViewPage:) name:NotificationScrollHomeColViewPage object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topBarButtonDidClick:) name:NotificationClickTopBarButton object:nil];
+    
     return self;
 }
 
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return numOfPage;
+    return NumOfPage;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -42,8 +55,36 @@
     return cell;
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerateP{
-    NSLog(@"ccc");
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    NSLog(@"...");
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    CGFloat scrollProportionFlt = self.contentOffset.x/(ColWidth * NumOfPage);
+    NSLog(@"%f",scrollProportionFlt);
+    
+    NSString * scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationMoveToNextTopBarBtn object:scrollProportionStr];
+    
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    self.isClick = NO;
+}
+
+- (void)scrollHomeColViewPage:(NSNotification *)noti{
+    NSString *scrollProportionStr = noti.object;
+    CGFloat scrollProportionFlt = [scrollProportionStr floatValue];
+    CGFloat offSetX = scrollProportionFlt * ColWidth * NumOfPage;
+    [self setContentOffset:CGPointMake(offSetX, 0) animated:YES];
+}
+
+- (void)topBarButtonDidClick:(NSNotification *)noti{
+    if ([noti.object isEqual: TopBarButtonClick]) {
+        [self scrollViewWillBeginDragging:self];
+        self.isClick = YES;
+    }
 }
 
 @end
