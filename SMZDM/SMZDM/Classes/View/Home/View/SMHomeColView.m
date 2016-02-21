@@ -36,7 +36,9 @@
     [self setBackgroundColor:[UIColor blueColor]];
     self.tag = 0;
     
+    //监听btn点击，滑动page
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollHomeColViewPage:) name:NotificationScrollHomeColViewPage object:nil];
+    //监听btn点击，保存点击状态
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeTopBarBtnClick:) name:NotificationJudgeClick object:nil];
     
     return self;
@@ -69,7 +71,8 @@
     
     CGFloat scrollProportionFlt = self.contentOffset.x/(ColWidth * NumOfPage);
     NSString * scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
-
+    
+    //如果点击btn，则不发滑动方向消息给topBarView
     if (!self.topBarBtnIsClick) {
         CGFloat endContentOffsetX = scrollView.contentOffset.x;
         
@@ -100,11 +103,14 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewScrollDirction object:@"left"];
         } else if (endContentOffsetX > self.willEndContentOffsetX && self.willEndContentOffsetX > self.startContentOffsetX) {//画面从左往右移动,后一页
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewScrollDirction object:@"right"];
+        } else{
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewScrollDirction object:@"noScroll"];
         }
         //通知topBarBtn恢复颜色设置
         [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewDidEndDecelerating object:nil];
     }
     
+    //点击结束，保存状态
     self.topBarBtnIsClick = NO;
 }
 

@@ -13,9 +13,13 @@
 
 @interface SMTopBarView()
 
+//当前选中button
 @property (nonatomic, strong) UIButton *currentBtn;
+//选中状态下红色底边view
 @property (nonatomic, strong) SMTopBarBottomView *topBarBottomView;
+//存放button
 @property (nonatomic, strong) NSMutableArray *btnArray;
+//滑动时滑动方向上的下一个button
 @property (nonatomic, strong) UIButton *nextButton;
 
 @end
@@ -27,9 +31,13 @@
     
     [self setupUI];
     
+    //监听滑动动作，使btn的labelTitle颜色渐变
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topBtnColorChanged:) name:NotificationTopBtnColorChanged object:nil];
+    //监听滑动结束，重置button颜色
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topBtnColorRestore) name:NotificationHomeColViewDidEndDecelerating object:nil];
+    //监听滑动结束时的滑动方向
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getScrollDirction:) name:NotificationHomeColViewScrollDirction object:nil];
+    //监听实时滑动方向
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getTemporaryScrollDirction:) name:NotificationHomeColViewTemporaryScrollDirction object:nil];
     
     return self;
@@ -96,9 +104,14 @@
 - (void)selectTopBarBtn:(UIButton *)btn{
 
     [self changeSelestedBtn:btn];
+    
+    //点击button时button相对于屏幕宽度的移动比例
     CGFloat scrollProportionFlt = (btn.frame.origin.x)/SelfWidth;
     NSString *scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
+    
+    //发消息给collectionView已触发点击事件
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationJudgeClick object:@"click"];
+    //发消息给collectionView切换page
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationScrollHomeColViewPage object:scrollProportionStr];
 }
 
@@ -108,36 +121,48 @@
     self.currentBtn.selected = YES;
 }
 
+//button text颜色渐变
 - (void)topBtnColorChanged:(NSNotification *)noti{
     NSString *offSetStr = noti.object;
     CGFloat offSetFlt = [offSetStr floatValue];
     
-    self.currentBtn.titleLabel.textColor = [[UIColor alloc] initWithRed:(100/offSetFlt/100 + 130)/255.0 green:53.0/255.0 blue:44/255.0 alpha:1.0];
-    self.nextButton.titleLabel.textColor = [[UIColor alloc] initWithRed:(255 - (100/offSetFlt/100 + 130))/255.0 green:53.0/255.0 blue:44/255.0 alpha:1.0];
+    [self.currentBtn setTitleColor:[[UIColor alloc] initWithRed:(100/offSetFlt/100 + 130)/255.0 green:53.0/255.0 blue:44/255.0 alpha:1.0] forState:UIControlStateSelected];
+    
+    [self.nextButton setTitleColor:[[UIColor alloc] initWithRed:(255 - (100/offSetFlt/100 + 130))/255.0 green:53.0/255.0 blue:44/255.0 alpha:1.0] forState:UIControlStateNormal];
 }
 
 - (void)topBtnColorRestore{
     [self resetBtnColor:self.currentBtn];
 }
 
+///button text颜色重置
 - (void)resetBtnColor:(UIButton *)btn{
+    
     [btn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
-    btn.titleLabel.textColor = [UIColor redColor];
 }
 
+//获得最终滑动方向
 - (void)getScrollDirction:(NSNotification *)noti{
     NSString *direction = noti.object;
     NSInteger tag = self.currentBtn.tag;
-    [self resetBtnColor:self.currentBtn];
+    
     
     if ([direction isEqualToString:@"right"] && tag < 5) {
+        [self resetBtnColor:self.currentBtn];
         [self changeSelestedBtn:self.btnArray[++tag]];
+        NSLog(@"r");
     }else if ([direction isEqualToString:@"left"] && tag > 0){
+        [self resetBtnColor:self.currentBtn];
         [self changeSelestedBtn:self.btnArray[--tag]];
+        NSLog(@"l");
+    }else{
+        //如果用户一顿瞎逼滑之后btn没有发生移动，则重置nextBtn颜色
+        [self resetBtnColor:self.nextButton];
     }
 }
 
+//获得临时滑动方向
 - (void)getTemporaryScrollDirction:(NSNotification *)noti{
     NSString *direction = noti.object;
     NSInteger tag = self.currentBtn.tag;
