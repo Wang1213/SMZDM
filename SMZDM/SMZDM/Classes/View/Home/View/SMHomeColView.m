@@ -16,6 +16,9 @@
 #define HomeColCellID @"HOME_COLLECTION_CELL"
 
 @interface SMHomeColView()<UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+@property (nonatomic, assign) CGFloat startContentOffsetX;
+@property (nonatomic, assign) CGFloat willEndContentOffsetX;
+@property (nonatomic, assign) BOOL topBarBtnIsClick;
 
 @end
 
@@ -34,6 +37,7 @@
     self.tag = 0;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(scrollHomeColViewPage:) name:NotificationScrollHomeColViewPage object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeTopBarBtnClick:) name:NotificationJudgeClick object:nil];
     
     return self;
 }
@@ -53,17 +57,55 @@
     return cell;
 }
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{ //拖动前的起始坐标
+    self.startContentOffsetX = scrollView.contentOffset.x;
+}
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{ //将要停止前的坐标
+    self.willEndContentOffsetX = scrollView.contentOffset.x;
+}
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     
     CGFloat scrollProportionFlt = self.contentOffset.x/(ColWidth * NumOfPage);
     NSString * scrollProportionStr = [NSString stringWithFormat:@"%f",scrollProportionFlt];
+
+    if (!self.topBarBtnIsClick) {
+        CGFloat endContentOffsetX = scrollView.contentOffset.x;
+        
+        //判断临时滑动方向
+        if (endContentOffsetX < self.willEndContentOffsetX && self.willEndContentOffsetX < self.startContentOffsetX) { //画面从右往左移动,前一页
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewTemporaryScrollDirction object:@"left"];
+        } else if (endContentOffsetX > self.willEndContentOffsetX && self.willEndContentOffsetX > self.startContentOffsetX) {//画面从左往右移动,后一页
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewTemporaryScrollDirction object:@"right"];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationTopBtnColorChanged object:scrollProportionStr];
+    }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationMoveToNextTopBarBtn object:scrollProportionStr];
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationTopBtnColorChanged object:scrollProportionStr];
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    self.topBarBtnIsClick = NO;
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewDidEndDecelerating object:nil];
+    
+    if (!self.topBarBtnIsClick) {
+        CGFloat endContentOffsetX = scrollView.contentOffset.x;
+        
+        //判断最终滑动方向
+        if (endContentOffsetX < self.willEndContentOffsetX && self.willEndContentOffsetX < self.startContentOffsetX) { //画面从右往左移动,前一页
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewScrollDirction object:@"left"];
+        } else if (endContentOffsetX > self.willEndContentOffsetX && self.willEndContentOffsetX > self.startContentOffsetX) {//画面从左往右移动,后一页
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewScrollDirction object:@"right"];
+        }
+        //通知topBarBtn恢复颜色设置
+        [[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeColViewDidEndDecelerating object:nil];
+    }
+    
+    self.topBarBtnIsClick = NO;
 }
 
 //监听执行
@@ -74,6 +116,13 @@
     CGFloat offSetX = scrollProportionFlt * ColWidth * NumOfPage;
     [self setContentOffset:CGPointMake(offSetX, 0) animated:YES];
     
+}
+
+- (void)judgeTopBarBtnClick:(NSNotification *)noti{
+    NSString *str = noti.object;
+    if ([str isEqualToString:@"click"]) {
+        self.topBarBtnIsClick = YES;
+    }
 }
 
 @end

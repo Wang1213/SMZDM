@@ -20,5 +20,8 @@
 #define NotificationScrollHomeColViewPage @"NotificationScrollHomeColViewPage"
 #define NotificationTopBtnColorChanged @"NotificationTopBtnColorChanged"
 #define NotificationHomeColViewDidEndDecelerating @"NotificationHomeColViewDidEndDecelerating"
+#define NotificationHomeColViewScrollDirction @"NotificationHomeColViewScrollDirction"
+#define NotificationHomeColViewTemporaryScrollDirction @"NotificationHomeColViewTemporaryScrollDirction"
+#define NotificationJudgeClick @"NotificationJudgeClick"
 
 #endif /* PrefixHeader_pch */
