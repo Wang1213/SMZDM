@@ -26,7 +26,7 @@
     imgView.contentMode = UIViewContentModeScaleAspectFit;
     
     self.bottomIamgeMove = ^(CGFloat moveToPosition){
-        [UIImageView animateWithDuration:0.15 animations:^{
+        [UIImageView animateWithDuration:0.12 animations:^{
             imgView.x = moveToPosition;
         }];
     };

@@ -9,12 +9,12 @@
 #import "SMTopBarView.h"
 #import "PrefixHeader.pch"
 #import "SMTopBarBottomView.h"
+#import "UIView+Frame.h"
 
 @interface SMTopBarView()
 
 @property (nonatomic, strong) UIButton *currentBtn;
 @property (nonatomic, strong) SMTopBarBottomView *topBarBottomView;
-@property (nonatomic, strong) NSMutableArray *btnArray;
 
 @end
 
@@ -25,16 +25,10 @@
     
     [self setupUI];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiSelect:) name:NotificationdidScelectTopBarButton object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topBtnColorChanged:) name:NotificationTopBtnColorChanged object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(topBtnColorRestore) name:NotificationHomeColViewDidEndDecelerating object:nil];
     
     return self;
-}
-
-- (NSMutableArray *)btnArray{
-    if (!_btnArray) {
-        _btnArray = [NSMutableArray array];
-    }
-    return _btnArray;
 }
 
 - (void)dealloc{
@@ -60,7 +54,6 @@
             self.currentBtn = btn;
         }
         
-        [self.btnArray addObject:btn];
         [self addSubview:btn];
     }
     
@@ -89,7 +82,6 @@
 
 - (void)selectTopBarBtn:(UIButton *)btn{
 
-    //[[NSNotificationCenter defaultCenter] postNotificationName:NotificationClickTopBarButton object:@"Click"];
     self.currentBtn.selected = NO;
     self.currentBtn = btn;
     btn.selected = YES;
@@ -98,12 +90,16 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationScrollHomeColViewPage object:scrollProportionStr];
 }
 
-- (void)notiSelect:(NSNotification *)noti{
-    NSString *tagStr = noti.object;
-    NSInteger tagInt = [tagStr integerValue];
-    self.currentBtn.selected = NO;
-    self.currentBtn = self.btnArray[tagInt];
-    self.currentBtn.selected = YES;
+- (void)topBtnColorChanged:(NSNotification *)noti{
+    NSString *offSetStr = noti.object;
+    CGFloat offSetFlt = [offSetStr floatValue];
+    
+    self.currentBtn.titleLabel.textColor = [[UIColor alloc] initWithRed:(150/offSetFlt/100 + 80)/255.0 green:53.0/255.0 blue:44/255.0 alpha:1.0];
+}
+
+- (void)topBtnColorRestore{
+    self.currentBtn.titleLabel.textColor = [UIColor redColor];
+    NSLog(@"x");
 }
 
 @end
