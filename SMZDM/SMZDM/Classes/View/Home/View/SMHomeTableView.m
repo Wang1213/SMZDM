@@ -7,10 +7,10 @@
 //
 
 #import "SMHomeTableView.h"
-#define HomeColViewCell @"HomeColViewCell"
 #import "SMHomeCell.h"
 #import "SMArticleModel.h"
 
+#define HomeCellID @"SMHomeCell"
 
 @interface SMHomeTableView()<UITableViewDelegate, UITableViewDataSource>
 
@@ -54,10 +54,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SMHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeColViewCell];
+    SMHomeCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeCellID];
     
     if (!cell) {
-        cell = [[SMHomeCell alloc] init];
+        cell = [[SMHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HomeCellID];
     }
     UIColor *randomColor = [[UIColor alloc] initWithRed: arc4random() % 256/256.0  green: arc4random() % 256/256.0  blue: arc4random() % 256/256.0  alpha:1.0];
     [cell setBackgroundColor:randomColor];

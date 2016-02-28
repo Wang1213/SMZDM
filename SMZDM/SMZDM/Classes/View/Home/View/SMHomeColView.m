@@ -9,12 +9,12 @@
 #import "SMHomeColView.h"
 #import "PrefixHeader.pch"
 #import "SMTopBarBottomView.h"
-#import "SMHomeTableView.h"
+#import "SMHomeColCell.h"
 
 #define NumOfPage 6
 #define ColWidth self.bounds.size.width
 
-#define HomeColCellID @"HOME_COLLECTION_CELL"
+static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
 
 @interface SMHomeColView()<UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 @property (nonatomic, assign) CGFloat startContentOffsetX;
@@ -27,7 +27,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout{
     self = [super initWithFrame:frame collectionViewLayout:layout];
-    [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:HomeColCellID];
+    [self registerClass:[SMHomeColCell class] forCellWithReuseIdentifier:HomeColCellID];
     self.delegate = self;
     self.dataSource = self;
     self.showsHorizontalScrollIndicator = NO;
@@ -55,10 +55,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    UICollectionViewCell *cell = [self dequeueReusableCellWithReuseIdentifier:HomeColCellID forIndexPath:indexPath];
-    
-    SMHomeTableView *tableView = [[SMHomeTableView alloc] initWithFrame:cell.bounds];
-    [cell addSubview:tableView];
+    SMHomeColCell *cell = [self dequeueReusableCellWithReuseIdentifier:HomeColCellID forIndexPath:indexPath];
     
     return cell;
     

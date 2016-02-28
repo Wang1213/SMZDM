@@ -15,6 +15,7 @@
 		21854D2B1C82D1DA00EEACB8 /* SMHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D2A1C82D1DA00EEACB8 /* SMHomeCell.m */; };
 		21854D341C82D7F200EEACB8 /* SMArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D331C82D7F200EEACB8 /* SMArticleModel.m */; };
 		21854D361C82E57D00EEACB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21854D351C82E57D00EEACB8 /* Assets.xcassets */; };
+		21854D391C83305400EEACB8 /* SMHomeColCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D381C83305400EEACB8 /* SMHomeColCell.m */; };
 		21BE935D1C61FED1007CB5DF /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE935C1C61FED1007CB5DF /* SMMainViewController.m */; };
 		21BE93601C62003B007CB5DF /* SMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE935F1C62003B007CB5DF /* SMHomeController.m */; };
 		21BE93631C620735007CB5DF /* SMDiscoveryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE93621C620735007CB5DF /* SMDiscoveryController.m */; };
@@ -48,6 +49,8 @@
 		21854D321C82D7F200EEACB8 /* SMArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArticleModel.h; sourceTree = "<group>"; };
 		21854D331C82D7F200EEACB8 /* SMArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArticleModel.m; sourceTree = "<group>"; };
 		21854D351C82E57D00EEACB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		21854D371C83305400EEACB8 /* SMHomeColCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeColCell.h; sourceTree = "<group>"; };
+		21854D381C83305400EEACB8 /* SMHomeColCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeColCell.m; sourceTree = "<group>"; };
 		21BE935B1C61FED1007CB5DF /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		21BE935C1C61FED1007CB5DF /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
 		21BE935E1C62003B007CB5DF /* SMHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeController.h; sourceTree = "<group>"; };
@@ -136,6 +139,8 @@
 				21FAA0671C70A44100E7F239 /* SMTopBarBottomView.m */,
 				21DB7BAE1C7187BC0071AFE3 /* SMHomeColView.h */,
 				21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */,
+				21854D371C83305400EEACB8 /* SMHomeColCell.h */,
+				21854D381C83305400EEACB8 /* SMHomeColCell.m */,
 				21E0D18E1C7C071A00AC6D5D /* SMHomeTableView.h */,
 				21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */,
 				21854D291C82D1DA00EEACB8 /* SMHomeCell.h */,
@@ -411,6 +416,7 @@
 				21854D2B1C82D1DA00EEACB8 /* SMHomeCell.m in Sources */,
 				21FAA06C1C70C65F00E7F239 /* UIView+Frame.m in Sources */,
 				217F3DCD1C6FFE8A004E265D /* SMTopBarView.m in Sources */,
+				21854D391C83305400EEACB8 /* SMHomeColCell.m in Sources */,
 				21BE93631C620735007CB5DF /* SMDiscoveryController.m in Sources */,
 				21FAA0681C70A44100E7F239 /* SMTopBarBottomView.m in Sources */,
 				21BE93601C62003B007CB5DF /* SMHomeController.m in Sources */,
