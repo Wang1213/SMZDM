@@ -25,6 +25,8 @@
     
     self.delegate = self;
     self.dataSource = self;
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     [self getData];
     [self setupUI];
     
@@ -59,8 +61,11 @@
     if (!cell) {
         cell = [[SMHomeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:HomeCellID];
     }
-    UIColor *randomColor = [[UIColor alloc] initWithRed: arc4random() % 256/256.0  green: arc4random() % 256/256.0  blue: arc4random() % 256/256.0  alpha:1.0];
-    [cell setBackgroundColor:randomColor];
+    
+    if (self.dataArray.count) {
+        SMArticleModel *model = self.dataArray[indexPath.row];
+        cell.model = model;
+    }
     
     return cell;
 }
@@ -77,10 +82,18 @@
             NSDictionary *tData = tlist[@"data" ];
             
             NSArray *tempArray = tData[@"rows"];
+            NSMutableArray *array = [NSMutableArray array];
+            
             for (NSDictionary *dict in tempArray) {
                 SMArticleModel *articleModel = [SMArticleModel articleWithDict:dict];
-                [self.dataArray addObject:articleModel];
+                [array addObject:articleModel];
             }
+            
+            self.dataArray = array;
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self reloadData];
+            });
             
         }
     }] resume];

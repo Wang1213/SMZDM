@@ -48,6 +48,21 @@
     return self;
 }
 
+- (void)setModel:(SMArticleModel *)model{
+    _model = model;
+    
+    [self reloadData];
+}
+
+-(void)reloadData{
+    [self.articleTitle setText:self.model.article_title];
+    [self.articlePrice setText:self.model.article_price];
+    [self.articleFavorite setTitle:self.model.article_favorite forState:UIControlStateNormal];
+    [self.articleComment setTitle:self.model.article_comment forState:UIControlStateNormal];
+    [self.articleRzlxAndDate setText:self.model.article_rzlx];
+
+}
+
 - (void)setupUI{
     self.articlePic = [[UIImageView alloc] init];
     self.articlePic.image = [UIImage imageNamed:@"noImage_defaultHomePage_list"];
@@ -55,27 +70,23 @@
     
     self.articleTitle = [[UILabel alloc] init];
     [self.articleTitle setBackgroundColor:[UIColor lightGrayColor]];
-    [self.articleTitle setText:@"标题"];
     [self addSubview:self.articleTitle];
     
     self.articlePrice = [[UILabel alloc] init];
     [self.articlePrice setBackgroundColor:[UIColor orangeColor]];
-    [self.articlePrice setText:@"价格"];
+    
     [self addSubview:self.articlePrice];
     
     self.articleFavorite = [[UIButton alloc] init];
     [self.articleFavorite setBackgroundColor:[UIColor grayColor]];
-    [self.articleFavorite setTitle:@"赞" forState:UIControlStateNormal];
     [self addSubview:self.articleFavorite];
     
     self.articleComment = [[UIButton alloc] init];
     [self.articleComment setBackgroundColor:[UIColor grayColor]];
-    [self.articleComment setTitle:@"评论" forState:UIControlStateNormal];
     [self addSubview:self.articleComment];
     
     self.articleRzlxAndDate = [[UILabel alloc] init];
     [self.articleRzlxAndDate setBackgroundColor:[UIColor redColor]];
-    [self.articleRzlxAndDate setText:@"公告|2.28"];
     [self addSubview:self.articleRzlxAndDate];
 
 }

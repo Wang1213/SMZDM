@@ -25,7 +25,6 @@
         self.homeTableView = [[SMHomeTableView alloc] initWithFrame:self.bounds];
         [self addSubview:self.homeTableView];
         
-        NSLog(@"xxx");
     }
     return self;
 }
