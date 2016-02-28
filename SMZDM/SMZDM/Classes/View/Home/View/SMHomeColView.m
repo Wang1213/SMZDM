@@ -9,6 +9,7 @@
 #import "SMHomeColView.h"
 #import "PrefixHeader.pch"
 #import "SMTopBarBottomView.h"
+#import "SMHomeTableView.h"
 
 #define NumOfPage 6
 #define ColWidth self.bounds.size.width
@@ -53,10 +54,14 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
     UICollectionViewCell *cell = [self dequeueReusableCellWithReuseIdentifier:HomeColCellID forIndexPath:indexPath];
-    UIColor *randomColor = [[UIColor alloc] initWithRed: arc4random() % 256/256.0  green: arc4random() % 256/256.0  blue: arc4random() % 256/256.0  alpha:1.0];
-    [cell setBackgroundColor:randomColor];
+    
+    SMHomeTableView *tableView = [[SMHomeTableView alloc] initWithFrame:cell.bounds];
+    [cell addSubview:tableView];
+    
     return cell;
+    
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{ //拖动前的起始坐标

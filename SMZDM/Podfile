@@ -7,7 +7,7 @@ target 'SMZDM' do
 
 pod 'AFNetworking'
 pod 'SDWebImage'
-pod 'SnapKit'
+pod 'Masonry'
 
 end
 

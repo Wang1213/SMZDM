@@ -151,11 +151,9 @@
     if ([direction isEqualToString:@"right"] && tag < 5) {
         [self resetBtnColor:self.currentBtn];
         [self changeSelestedBtn:self.btnArray[++tag]];
-        NSLog(@"r");
     }else if ([direction isEqualToString:@"left"] && tag > 0){
         [self resetBtnColor:self.currentBtn];
         [self changeSelestedBtn:self.btnArray[--tag]];
-        NSLog(@"l");
     }else{
         //如果用户一顿瞎逼滑之后btn没有发生移动，则重置nextBtn颜色
         [self resetBtnColor:self.nextButton];

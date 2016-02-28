@@ -12,7 +12,9 @@
 		217F3DC31C6A0EBC004E265D /* SMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DC21C6A0EBC004E265D /* SMNavigationController.m */; };
 		217F3DCD1C6FFE8A004E265D /* SMTopBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DCC1C6FFE8A004E265D /* SMTopBarView.m */; };
 		217F3DD01C700B83004E265D /* SMHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 217F3DCF1C700B83004E265D /* SMHomeView.m */; };
-		21BE93591C61E722007CB5DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BE93581C61E722007CB5DF /* Assets.xcassets */; };
+		21854D2B1C82D1DA00EEACB8 /* SMHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D2A1C82D1DA00EEACB8 /* SMHomeCell.m */; };
+		21854D341C82D7F200EEACB8 /* SMArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D331C82D7F200EEACB8 /* SMArticleModel.m */; };
+		21854D361C82E57D00EEACB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21854D351C82E57D00EEACB8 /* Assets.xcassets */; };
 		21BE935D1C61FED1007CB5DF /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE935C1C61FED1007CB5DF /* SMMainViewController.m */; };
 		21BE93601C62003B007CB5DF /* SMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE935F1C62003B007CB5DF /* SMHomeController.m */; };
 		21BE93631C620735007CB5DF /* SMDiscoveryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE93621C620735007CB5DF /* SMDiscoveryController.m */; };
@@ -21,6 +23,7 @@
 		21BE936C1C63409D007CB5DF /* SMTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE936B1C63409D007CB5DF /* SMTabBar.m */; };
 		21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE937A1C65FB91007CB5DF /* UIBarButtonItem+convenience.m */; };
 		21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */; };
+		21E0D1901C7C071A00AC6D5D /* SMHomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */; };
 		21FAA0681C70A44100E7F239 /* SMTopBarBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FAA0671C70A44100E7F239 /* SMTopBarBottomView.m */; };
 		21FAA06C1C70C65F00E7F239 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FAA06B1C70C65F00E7F239 /* UIView+Frame.m */; };
 		EBDF4F4715AD3C7E3711DD82 /* Pods_SMZDM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129E3FD6917AAE52C5D16129 /* Pods_SMZDM.framework */; };
@@ -40,7 +43,11 @@
 		217F3DCC1C6FFE8A004E265D /* SMTopBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTopBarView.m; sourceTree = "<group>"; };
 		217F3DCE1C700B83004E265D /* SMHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeView.h; sourceTree = "<group>"; };
 		217F3DCF1C700B83004E265D /* SMHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeView.m; sourceTree = "<group>"; };
-		21BE93581C61E722007CB5DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		21854D291C82D1DA00EEACB8 /* SMHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeCell.h; sourceTree = "<group>"; };
+		21854D2A1C82D1DA00EEACB8 /* SMHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeCell.m; sourceTree = "<group>"; };
+		21854D321C82D7F200EEACB8 /* SMArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMArticleModel.h; sourceTree = "<group>"; };
+		21854D331C82D7F200EEACB8 /* SMArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMArticleModel.m; sourceTree = "<group>"; };
+		21854D351C82E57D00EEACB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21BE935B1C61FED1007CB5DF /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		21BE935C1C61FED1007CB5DF /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
 		21BE935E1C62003B007CB5DF /* SMHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeController.h; sourceTree = "<group>"; };
@@ -57,6 +64,8 @@
 		21BE937A1C65FB91007CB5DF /* UIBarButtonItem+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+convenience.m"; sourceTree = "<group>"; };
 		21DB7BAE1C7187BC0071AFE3 /* SMHomeColView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeColView.h; sourceTree = "<group>"; };
 		21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeColView.m; sourceTree = "<group>"; };
+		21E0D18E1C7C071A00AC6D5D /* SMHomeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeTableView.h; sourceTree = "<group>"; };
+		21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeTableView.m; sourceTree = "<group>"; };
 		21FAA0661C70A44100E7F239 /* SMTopBarBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMTopBarBottomView.h; sourceTree = "<group>"; };
 		21FAA0671C70A44100E7F239 /* SMTopBarBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTopBarBottomView.m; sourceTree = "<group>"; };
 		21FAA06A1C70C65F00E7F239 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -101,8 +110,8 @@
 				21BE934D1C61E33A007CB5DF /* Classes */,
 				2178337B1C60E91D003D9D6D /* AppDelegate.h */,
 				2178337C1C60E91D003D9D6D /* AppDelegate.m */,
+				21854D351C82E57D00EEACB8 /* Assets.xcassets */,
 				217833891C60E91D003D9D6D /* Info.plist */,
-				21BE93581C61E722007CB5DF /* Assets.xcassets */,
 				217833781C60E91D003D9D6D /* Supporting Files */,
 			);
 			path = SMZDM;
@@ -127,6 +136,10 @@
 				21FAA0671C70A44100E7F239 /* SMTopBarBottomView.m */,
 				21DB7BAE1C7187BC0071AFE3 /* SMHomeColView.h */,
 				21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */,
+				21E0D18E1C7C071A00AC6D5D /* SMHomeTableView.h */,
+				21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */,
+				21854D291C82D1DA00EEACB8 /* SMHomeCell.h */,
+				21854D2A1C82D1DA00EEACB8 /* SMHomeCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -145,6 +158,8 @@
 		21BE934E1C61E33A007CB5DF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				21854D321C82D7F200EEACB8 /* SMArticleModel.h */,
+				21854D331C82D7F200EEACB8 /* SMArticleModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -324,7 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21BE93591C61E722007CB5DF /* Assets.xcassets in Resources */,
+				21854D361C82E57D00EEACB8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,12 +400,15 @@
 			files = (
 				21BE935D1C61FED1007CB5DF /* SMMainViewController.m in Sources */,
 				217F3DC31C6A0EBC004E265D /* SMNavigationController.m in Sources */,
+				21854D341C82D7F200EEACB8 /* SMArticleModel.m in Sources */,
 				21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */,
 				21BE936C1C63409D007CB5DF /* SMTabBar.m in Sources */,
 				21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */,
 				21BE93691C620851007CB5DF /* SMProfileController.m in Sources */,
+				21E0D1901C7C071A00AC6D5D /* SMHomeTableView.m in Sources */,
 				2178337D1C60E91D003D9D6D /* AppDelegate.m in Sources */,
 				217F3DD01C700B83004E265D /* SMHomeView.m in Sources */,
+				21854D2B1C82D1DA00EEACB8 /* SMHomeCell.m in Sources */,
 				21FAA06C1C70C65F00E7F239 /* UIView+Frame.m in Sources */,
 				217F3DCD1C6FFE8A004E265D /* SMTopBarView.m in Sources */,
 				21BE93631C620735007CB5DF /* SMDiscoveryController.m in Sources */,

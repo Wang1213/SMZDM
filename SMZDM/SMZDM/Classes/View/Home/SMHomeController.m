@@ -55,4 +55,5 @@
     SMHomeColView *colView = [[SMHomeColView alloc] initWithFrame:colViewCellFrame collectionViewLayout:colViewFlowLayout];
     [self.view addSubview:colView];
 }
+
 @end
