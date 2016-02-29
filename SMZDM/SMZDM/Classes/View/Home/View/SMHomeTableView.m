@@ -9,6 +9,7 @@
 #import "SMHomeTableView.h"
 #import "SMHomeCell.h"
 #import "SMArticleModel.h"
+#import "UIView+Frame.h"
 
 #define HomeCellID @"SMHomeCell"
 

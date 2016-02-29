@@ -34,7 +34,7 @@ static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
     self.showsVerticalScrollIndicator = NO;
     self.bounces = NO;
     self.pagingEnabled = YES;
-    [self setBackgroundColor:[UIColor blueColor]];
+    [self setBackgroundColor:[UIColor whiteColor]];
     self.tag = 0;
     
     //监听btn点击，滑动page

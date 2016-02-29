@@ -43,6 +43,7 @@
 @property (nonatomic, copy) NSString *time_sort;
 @property (nonatomic, copy) NSString *matches_rules;
 @property (nonatomic, copy) NSString *promotion_type;
+@property (nonatomic, copy) NSString *article_mall;
 
 + (instancetype)articleWithDict:(NSDictionary *)dict;
 

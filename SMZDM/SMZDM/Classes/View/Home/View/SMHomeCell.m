@@ -15,6 +15,7 @@
 #import "SMHomeCell.h"
 #import "Masonry.h"
 #import "UIView+Frame.h"
+#import "SMMixButtom.h"
 
 @interface SMHomeCell()
 
@@ -22,13 +23,13 @@
 
 @property (nonatomic, strong)UILabel *articleTitle;
 
-@property (nonatomic, strong)UIButton *articleFavorite;
+@property (nonatomic, strong)SMMixButtom *articleFavorite;
 
-@property (nonatomic, strong)UIButton *articleComment;
+@property (nonatomic, strong)SMMixButtom *articleComment;
 
 @property (nonatomic, strong)UILabel *articlePrice;
 
-@property (nonatomic, strong)UILabel *articleRzlxAndDate;
+@property (nonatomic, strong)UILabel *articleMallAndDate;
 
 @end
 
@@ -59,36 +60,50 @@
     [self.articlePrice setText:self.model.article_price];
     [self.articleFavorite setTitle:self.model.article_favorite forState:UIControlStateNormal];
     [self.articleComment setTitle:self.model.article_comment forState:UIControlStateNormal];
-    [self.articleRzlxAndDate setText:self.model.article_rzlx];
-
+    [self setArticleRzlxAndDate:self.model.article_mall andDate:self.model.article_date];
 }
 
 - (void)setupUI{
+    
     self.articlePic = [[UIImageView alloc] init];
     self.articlePic.image = [UIImage imageNamed:@"noImage_defaultHomePage_list"];
     [self addSubview:self.articlePic];
     
     self.articleTitle = [[UILabel alloc] init];
-    [self.articleTitle setBackgroundColor:[UIColor lightGrayColor]];
+    self.articleTitle.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.articleTitle.font = [UIFont systemFontOfSize:17];
+    self.articleTitle.numberOfLines = 2;
+    [self.articleTitle setTextColor:[UIColor grayColor]];
     [self addSubview:self.articleTitle];
     
     self.articlePrice = [[UILabel alloc] init];
-    [self.articlePrice setBackgroundColor:[UIColor orangeColor]];
-    
+    [self.articlePrice setTextColor:[UIColor redColor]];
+    self.articlePrice.font = [UIFont systemFontOfSize:17];
     [self addSubview:self.articlePrice];
     
-    self.articleFavorite = [[UIButton alloc] init];
-    [self.articleFavorite setBackgroundColor:[UIColor grayColor]];
+    self.articleFavorite = [[SMMixButtom alloc] init];
+    [self.articleFavorite setImage:[UIImage imageNamed:@"icon_zhi_list"] forState:UIControlStateNormal];
+    [self.articleFavorite setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    self.articleFavorite.titleLabel.font = [UIFont systemFontOfSize:13];
     [self addSubview:self.articleFavorite];
     
-    self.articleComment = [[UIButton alloc] init];
-    [self.articleComment setBackgroundColor:[UIColor grayColor]];
+    self.articleComment = [[SMMixButtom alloc] init];
+    [self.articleComment setImage:[UIImage imageNamed:@"icon_ping_list"] forState:UIControlStateNormal];
+    [self.articleComment setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    self.articleComment.titleLabel.font = [UIFont systemFontOfSize:11];
     [self addSubview:self.articleComment];
     
-    self.articleRzlxAndDate = [[UILabel alloc] init];
-    [self.articleRzlxAndDate setBackgroundColor:[UIColor redColor]];
-    [self addSubview:self.articleRzlxAndDate];
+    self.articleMallAndDate = [[UILabel alloc] init];
+    self.articleMallAndDate.font = [UIFont systemFontOfSize:11];
+    [self addSubview:self.articleMallAndDate];
 
+}
+
+- (void)setArticleRzlxAndDate:(NSString *)mall andDate:(NSString *)date{
+    NSString *shortDate = [date substringWithRange:NSMakeRange(5, 6)];
+    NSString *str = [NSString stringWithFormat:@"%@|%@",mall,shortDate];
+    [self.articleMallAndDate setTextColor:[UIColor lightGrayColor]];
+    [self.articleMallAndDate setText:str];
 }
 
 - (void)layoutSubviews{
@@ -112,7 +127,7 @@
         make.height.equalTo(30);
     }];
     
-    [self.articleRzlxAndDate makeConstraints:^(MASConstraintMaker *make) {
+    [self.articleMallAndDate makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.articlePic.right);
         make.right.equalTo(self.articleComment.left);
         make.top.equalTo(self.articlePrice.bottom);
@@ -123,14 +138,14 @@
         make.right.equalTo(self);
         make.top.equalTo(self.articlePrice.bottom);
         make.bottom.equalTo(self);
-        make.width.equalTo(50);
+        make.width.equalTo(60);
     }];
     
     [self.articleComment makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.articleFavorite.left);
         make.top.equalTo(self.articlePrice.bottom);
         make.bottom.equalTo(self);
-        make.width.equalTo(50);
+        make.width.equalTo(60);
     }];
 }
 
