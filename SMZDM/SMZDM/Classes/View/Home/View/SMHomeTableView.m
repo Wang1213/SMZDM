@@ -33,8 +33,6 @@
 
     [self getDataWithUrlString:@"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1"];
     
-//    [self getDataWithUrlString:@"http://api.smzdm.com/v2/util/banner?f=iphone&type=home&v=6.1.2&weixin=0"];
-    
     [self setupUI];
     
     return self;

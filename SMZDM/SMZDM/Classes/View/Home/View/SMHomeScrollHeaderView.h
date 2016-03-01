@@ -10,6 +10,4 @@
 
 @interface SMHomeScrollHeaderView : UICollectionView
 
-@property (nonatomic, strong)NSMutableArray *dataArray;
-
 @end

@@ -16,11 +16,13 @@
 #import "Masonry.h"
 #import "PrefixHeader.pch"
 
+#define NumberOfPages 5
+
 @interface SMHomeHeaderCell()
 
-@property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) SMHomeHeaderCell *scrollView;
 @property (nonatomic, strong) SMHomeScrollHeaderView * homeScrollHeaderView;
+@property (nonatomic, strong)UIPageControl *pageControl;
 
 @end
 
@@ -31,7 +33,13 @@
     
     [self setupUI];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pageChanged:) name:NotificationHomeHeaderCellPageChanged object:nil];
+    
     return self;
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setupUI{
@@ -47,14 +55,13 @@
     [self.homeScrollHeaderView setBackgroundColor:[UIColor blueColor]];
     [self addSubview:homeScrollHeaderView];
     
-}
-
--(void)setDataArray:(NSMutableArray *)dataArray{
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    _dataArray = dataArray;
-//    [self reloadData];
+    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    pageControl = [[UIPageControl alloc] init];
+    pageControl.currentPageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.numberOfPages = NumberOfPages;
+    pageControl.currentPage = 0;
+    self.pageControl = pageControl;
+    [self addSubview:pageControl];
 }
 
 - (void)layoutSubviews{
@@ -64,12 +71,16 @@
         make.top.bottom.right.leading.equalTo(self).offset(0);
     }];
 
+    [self.pageControl makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self);
+        make.bottom.equalTo(self);
+    }];
 }
 
-//- (void)reloadData{
-//    if (self.dataArray.count) {
-//        SMScrollHeaderModel *model = self.dataArray[1];
-//    }
-//}
+- (void)pageChanged:(NSNotification *)noti{
+    NSString *currentPageStr = noti.object;
+    NSInteger currentPageInt = [currentPageStr integerValue];
+    self.pageControl.currentPage = currentPageInt;
+}
 
 @end
