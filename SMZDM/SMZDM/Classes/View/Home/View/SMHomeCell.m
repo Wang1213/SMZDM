@@ -14,8 +14,11 @@
 
 #import "SMHomeCell.h"
 #import "Masonry.h"
+#import "UIImageView+WebCache.h"
 #import "UIView+Frame.h"
 #import "SMMixButtom.h"
+
+#define CellMargin 6
 
 @interface SMHomeCell()
 
@@ -41,6 +44,14 @@
     return self;
 }
 
+//设置cell间距
+- (void)setFrame:(CGRect)frame
+{
+    frame.origin.y += CellMargin;//整体向下 移动10
+    frame.size.height -= CellMargin;//间隔为10
+    [super setFrame:frame];
+}
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
@@ -61,6 +72,8 @@
     [self.articleFavorite setTitle:self.model.article_favorite forState:UIControlStateNormal];
     [self.articleComment setTitle:self.model.article_comment forState:UIControlStateNormal];
     [self setArticleRzlxAndDate:self.model.article_mall andDate:self.model.article_date];
+    [self.articlePic sd_setImageWithURL:[NSURL URLWithString:self.model.article_pic]];
+    self.articlePic.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)setupUI{

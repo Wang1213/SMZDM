@@ -52,7 +52,7 @@
     colViewFlowLayout.itemSize = CGSizeMake(ScreenWidth, ScreenHeight);
     colViewFlowLayout.scrollDirection =  UICollectionViewScrollDirectionHorizontal;
     colViewFlowLayout.minimumLineSpacing = 0;
-    //colViewFlowLayout.minimumInteritemSpacing = 0;
+    colViewFlowLayout.minimumInteritemSpacing = 0;
     SMHomeColView *colView = [[SMHomeColView alloc] initWithFrame:colViewCellFrame collectionViewLayout:colViewFlowLayout];
     [self.view addSubview:colView];
 }

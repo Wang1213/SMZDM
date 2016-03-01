@@ -17,6 +17,7 @@
 		21854D361C82E57D00EEACB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21854D351C82E57D00EEACB8 /* Assets.xcassets */; };
 		21854D391C83305400EEACB8 /* SMHomeColCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D381C83305400EEACB8 /* SMHomeColCell.m */; };
 		21854D3C1C83757600EEACB8 /* SMMixButtom.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D3B1C83757600EEACB8 /* SMMixButtom.m */; };
+		21854D421C842D4F00EEACB8 /* SMScrollHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 21854D411C842D4F00EEACB8 /* SMScrollHeaderModel.m */; };
 		21BE935D1C61FED1007CB5DF /* SMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE935C1C61FED1007CB5DF /* SMMainViewController.m */; };
 		21BE93601C62003B007CB5DF /* SMHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE935F1C62003B007CB5DF /* SMHomeController.m */; };
 		21BE93631C620735007CB5DF /* SMDiscoveryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE93621C620735007CB5DF /* SMDiscoveryController.m */; };
@@ -24,6 +25,8 @@
 		21BE93691C620851007CB5DF /* SMProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE93681C620851007CB5DF /* SMProfileController.m */; };
 		21BE936C1C63409D007CB5DF /* SMTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE936B1C63409D007CB5DF /* SMTabBar.m */; };
 		21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE937A1C65FB91007CB5DF /* UIBarButtonItem+convenience.m */; };
+		21D667C21C84C97000712BEF /* SMHomeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D667C11C84C97000712BEF /* SMHomeHeaderCell.m */; };
+		21D667CB1C84CCC100712BEF /* SMHomeScrollHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D667CA1C84CCC100712BEF /* SMHomeScrollHeaderView.m */; };
 		21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */; };
 		21E0D1901C7C071A00AC6D5D /* SMHomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */; };
 		21FAA0681C70A44100E7F239 /* SMTopBarBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FAA0671C70A44100E7F239 /* SMTopBarBottomView.m */; };
@@ -54,6 +57,8 @@
 		21854D381C83305400EEACB8 /* SMHomeColCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeColCell.m; sourceTree = "<group>"; };
 		21854D3A1C83757600EEACB8 /* SMMixButtom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMixButtom.h; sourceTree = "<group>"; };
 		21854D3B1C83757600EEACB8 /* SMMixButtom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMixButtom.m; sourceTree = "<group>"; };
+		21854D401C842D4F00EEACB8 /* SMScrollHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMScrollHeaderModel.h; sourceTree = "<group>"; };
+		21854D411C842D4F00EEACB8 /* SMScrollHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMScrollHeaderModel.m; sourceTree = "<group>"; };
 		21BE935B1C61FED1007CB5DF /* SMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMMainViewController.h; sourceTree = "<group>"; };
 		21BE935C1C61FED1007CB5DF /* SMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMMainViewController.m; sourceTree = "<group>"; };
 		21BE935E1C62003B007CB5DF /* SMHomeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeController.h; sourceTree = "<group>"; };
@@ -68,6 +73,10 @@
 		21BE936B1C63409D007CB5DF /* SMTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMTabBar.m; sourceTree = "<group>"; };
 		21BE93791C65FB91007CB5DF /* UIBarButtonItem+convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+convenience.h"; sourceTree = "<group>"; };
 		21BE937A1C65FB91007CB5DF /* UIBarButtonItem+convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+convenience.m"; sourceTree = "<group>"; };
+		21D667C01C84C97000712BEF /* SMHomeHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeHeaderCell.h; sourceTree = "<group>"; };
+		21D667C11C84C97000712BEF /* SMHomeHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeHeaderCell.m; sourceTree = "<group>"; };
+		21D667C91C84CCC100712BEF /* SMHomeScrollHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeScrollHeaderView.h; sourceTree = "<group>"; };
+		21D667CA1C84CCC100712BEF /* SMHomeScrollHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeScrollHeaderView.m; sourceTree = "<group>"; };
 		21DB7BAE1C7187BC0071AFE3 /* SMHomeColView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeColView.h; sourceTree = "<group>"; };
 		21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeColView.m; sourceTree = "<group>"; };
 		21E0D18E1C7C071A00AC6D5D /* SMHomeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeTableView.h; sourceTree = "<group>"; };
@@ -146,8 +155,12 @@
 				21854D381C83305400EEACB8 /* SMHomeColCell.m */,
 				21E0D18E1C7C071A00AC6D5D /* SMHomeTableView.h */,
 				21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */,
+				21D667C01C84C97000712BEF /* SMHomeHeaderCell.h */,
+				21D667C11C84C97000712BEF /* SMHomeHeaderCell.m */,
 				21854D291C82D1DA00EEACB8 /* SMHomeCell.h */,
 				21854D2A1C82D1DA00EEACB8 /* SMHomeCell.m */,
+				21D667C91C84CCC100712BEF /* SMHomeScrollHeaderView.h */,
+				21D667CA1C84CCC100712BEF /* SMHomeScrollHeaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -168,6 +181,8 @@
 			children = (
 				21854D321C82D7F200EEACB8 /* SMArticleModel.h */,
 				21854D331C82D7F200EEACB8 /* SMArticleModel.m */,
+				21854D401C842D4F00EEACB8 /* SMScrollHeaderModel.h */,
+				21854D411C842D4F00EEACB8 /* SMScrollHeaderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,8 +429,11 @@
 				21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */,
 				21BE936C1C63409D007CB5DF /* SMTabBar.m in Sources */,
 				21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */,
+				21854D421C842D4F00EEACB8 /* SMScrollHeaderModel.m in Sources */,
 				21BE93691C620851007CB5DF /* SMProfileController.m in Sources */,
 				21E0D1901C7C071A00AC6D5D /* SMHomeTableView.m in Sources */,
+				21D667CB1C84CCC100712BEF /* SMHomeScrollHeaderView.m in Sources */,
+				21D667C21C84C97000712BEF /* SMHomeHeaderCell.m in Sources */,
 				2178337D1C60E91D003D9D6D /* AppDelegate.m in Sources */,
 				21854D3C1C83757600EEACB8 /* SMMixButtom.m in Sources */,
 				217F3DD01C700B83004E265D /* SMHomeView.m in Sources */,
