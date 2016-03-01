@@ -52,7 +52,6 @@
     
     SMHomeScrollHeaderView *homeScrollHeaderView = [[SMHomeScrollHeaderView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 90) collectionViewLayout:colViewFlowLayout];
     self.homeScrollHeaderView = homeScrollHeaderView;
-    [self.homeScrollHeaderView setBackgroundColor:[UIColor blueColor]];
     [self addSubview:homeScrollHeaderView];
     
     UIPageControl *pageControl = [[UIPageControl alloc] init];

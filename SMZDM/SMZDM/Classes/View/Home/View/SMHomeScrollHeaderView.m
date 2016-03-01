@@ -66,12 +66,23 @@
 @end
 
 
-//
 
 
-@interface SMHomeScrollHeaderView()<UICollectionViewDataSource, UICollectionViewDelegate, UIScrollViewDelegate>
+
+typedef NS_ENUM(NSInteger, AutoScrollDirction) {
+    AutoScrollDirctionRight,
+    AutoScrollDirctionLeft
+};
+
+@interface SMHomeScrollHeaderView()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, strong)NSMutableArray *dataArray;
+
+//计时器
+@property (nonatomic, strong)NSTimer *timer;
+
+//自动滚动方向
+@property (nonatomic, assign)AutoScrollDirction autoScrollDirction;
 
 @end
 
@@ -88,6 +99,9 @@
     self.showsHorizontalScrollIndicator = NO;
     self.showsVerticalScrollIndicator = NO;
     self.contentSize = CGSizeMake(ScreenWidth * 5, 150);
+    
+    self.autoScrollDirction = AutoScrollDirctionRight;
+    [self startTimer];
     
     [self registerClass:[SMHomeScrollHeaderCell class] forCellWithReuseIdentifier:HomeScrollHeaderViewID];
     [self getDataWithUrlString:@"http://api.smzdm.com/v2/util/banner?f=iphone&type=home&v=6.1.2&weixin=0"];
@@ -120,6 +134,19 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     return self.bounds.size;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    [self.timer invalidate];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self startTimer];
+    
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
@@ -158,6 +185,49 @@
         }
     }] resume];
     
+}
+
+//启动时钟
+- (void)startTimer{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+}
+
+//停止时钟
+- (void)updateTimer{
+    NSInteger count = NumberOfPages - 1
+    ;
+    
+    if (!count) {
+        return;
+    }
+    
+    NSInteger index = [self getCurrentPageIndex];
+    if (self.autoScrollDirction == AutoScrollDirctionRight && index < count) {
+        [self pageChanged:++index];
+    }else if (index == count){
+        [self pageChanged:--index];
+        self.autoScrollDirction = AutoScrollDirctionLeft;
+    }else if (self.autoScrollDirction == AutoScrollDirctionLeft && index > 0){
+        [self pageChanged:--index];
+    }else if (index == 0){
+        [self pageChanged:++index];
+        self.autoScrollDirction = AutoScrollDirctionRight;
+    }
+    
+}
+
+- (void)pageChanged:(NSInteger)pageIndex{
+    [self.timer invalidate];
+    
+    CGFloat x = self.bounds.size.width * pageIndex;
+    [self setContentOffset:CGPointMake(x, 0) animated:YES];
+    [self startTimer];
+}
+
+- (NSInteger)getCurrentPageIndex{
+    
+    return (self.contentOffset.x)/ScreenWidth;
 }
 
 @end
