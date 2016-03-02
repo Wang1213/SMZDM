@@ -87,22 +87,19 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     
-    int index = 0;
     CGFloat btnWidth = self.bounds.size.width/6;
     CGFloat btnHeight = self.bounds.size.height - self.topBarBottomView.topBarBottomH;
     CGFloat btnY = 0;
     
     for (UIButton *btn in self.subviews) {
         if ([btn isKindOfClass:NSClassFromString(@"UIButton")]) {
-            CGFloat btnX = index * btnWidth;
+            CGFloat btnX = btn.tag * btnWidth;
             btn.frame = CGRectMake(btnX, btnY, btnWidth, btnHeight);
-            index++;
         }
     }
 }
 
 - (void)selectTopBarBtn:(UIButton *)btn{
-
     [self changeSelestedBtn:btn];
     
     //点击button时button相对于屏幕宽度的移动比例
@@ -113,12 +110,16 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationJudgeClick object:@"click"];
     //发消息给collectionView切换page
     [[NSNotificationCenter defaultCenter] postNotificationName:NotificationScrollHomeColViewPage object:scrollProportionStr];
+    
 }
 
 - (void)changeSelestedBtn:(UIButton *)btn{
     self.currentBtn.selected = NO;
     self.currentBtn = btn;
     self.currentBtn.selected = YES;
+    
+    NSString *tagStr = [NSString stringWithFormat:@"%ld",self.currentBtn.tag];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NotificationGetChannelIndex object:tagStr];
 }
 
 //button text颜色渐变
@@ -146,7 +147,6 @@
 - (void)getScrollDirction:(NSNotification *)noti{
     NSString *direction = noti.object;
     NSInteger tag = self.currentBtn.tag;
-    
     
     if ([direction isEqualToString:@"right"] && tag < 5) {
         [self resetBtnColor:self.currentBtn];

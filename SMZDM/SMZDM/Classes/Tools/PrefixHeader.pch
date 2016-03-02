@@ -24,5 +24,7 @@
 #define NotificationHomeColViewTemporaryScrollDirction @"NotificationHomeColViewTemporaryScrollDirction"
 #define NotificationJudgeClick @"NotificationJudgeClick"
 #define NotificationHomeHeaderCellPageChanged @"NotificationHomeHeaderCellPageChanged"
+#define NotificationGetChannelIndex @"NotificationGetChannelIndex"
+#define NotificationHomeIndexPath @"NotificationHomeIndexPath"
 
 #endif /* PrefixHeader_pch */

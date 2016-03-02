@@ -16,7 +16,7 @@
 
 static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
 
-@interface SMHomeColView()<UICollectionViewDataSource, UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
+@interface SMHomeColView()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UIScrollViewDelegate>
 @property (nonatomic, assign) CGFloat startContentOffsetX;
 @property (nonatomic, assign) CGFloat willEndContentOffsetX;
 @property (nonatomic, assign) BOOL topBarBtnIsClick;
@@ -56,6 +56,9 @@ static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     SMHomeColCell *cell = [self dequeueReusableCellWithReuseIdentifier:HomeColCellID forIndexPath:indexPath];
+    
+    cell.currentRow = indexPath.row;
+    //[[NSNotificationCenter defaultCenter] postNotificationName:NotificationHomeIndexPath object:indexPath];
     
     return cell;
     
@@ -114,6 +117,7 @@ static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
     
     //点击结束，保存状态
     self.topBarBtnIsClick = NO;
+    
 }
 
 //监听执行
@@ -122,7 +126,7 @@ static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
     NSString *scrollProportionStr = noti.object;
     CGFloat scrollProportionFlt = [scrollProportionStr floatValue];
     CGFloat offSetX = scrollProportionFlt * ColWidth * NumOfPage;
-    [self setContentOffset:CGPointMake(offSetX, 0) animated:YES];
+    [self setContentOffset:CGPointMake(offSetX, 0) animated:NO];
     
 }
 
@@ -132,19 +136,5 @@ static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
         self.topBarBtnIsClick = YES;
     }
 }
-
-//- (NSString *)getChannelName:(NSInteger)row{
-//    
-//    switch (row) {
-//        case 1:
-//            return @"youhui";//http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=0
-//            break;
-//        case 2:
-//            return @"youhui";//http://api.smzdm.com/v1/youhui/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1
-//            break;
-//        default:
-//            break;
-//    }
-//}
 
 @end

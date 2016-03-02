@@ -13,6 +13,7 @@
 #import "SMScrollHeaderModel.h"
 #import "SMHomeHeaderCell.h"
 #import "SMNetWorkTools.h"
+#import "PrefixHeader.pch"
 
 #define HomeCellID @"SMHomeCell"
 #define HomeHeaderCellID @"HomeHeaderCellID"
@@ -32,12 +33,17 @@
     self.dataSource = self;
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    //[self getDataWithUrlString:@"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1"];
-    [self getData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData:) name:NotificationGetChannelIndex object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hehe:) name:NotificationHomeIndexPath object:nil];
     
+    [self firstloadHomeData];
     [self setupUI];
     
     return self;
+}
+
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (NSMutableArray *)dataArray{
@@ -107,38 +113,66 @@
 
 }
 
-- (void)getDataWithUrlString:(NSString *)urlStr{
-    NSURL *url = [NSURL URLWithString:urlStr];
-    NSURLRequest *rerquest = [NSURLRequest requestWithURL:url];
+//第一次加载频道“首页”数据，只执行一次
+- (void)firstloadHomeData{
     
-    [[[NSURLSession sharedSession] dataTaskWithRequest:rerquest completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        if (data) {
-            
-            NSDictionary *tlist = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            NSDictionary *tData = tlist[@"data" ];
-            
-            NSArray *tempArray = tData[@"rows"];
-            NSMutableArray *array = [NSMutableArray array];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self loadDataWithChannelIndex:0];
+    });
+}
 
-            for (NSDictionary *dict in tempArray) {
-                SMArticleModel *articleModel = [SMArticleModel articleWithDict:dict];
-                [array addObject:articleModel];
-            }
-                
-            self.dataArray = array;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self reloadData];
-            });
-            
-        }
-    }] resume];
+//
+- (void)loadData:(NSNotification *)noti{
+    
+    NSString *channelStr = noti.object;
+    NSInteger channelInt = [channelStr integerValue];
+//
+//    NSLog(@"%ld", channelInt);
+//    NSLog(@"%ld", self.currentRow);
+//    
+//    if (channelInt != self.currentRow) {
+//        return;
+//    }
+//    NSLog(@"fff");
+
+    [self loadDataWithChannelIndex:channelInt];
     
 }
 
-- (void)getData{
-    [[SMNetWorkTools shareManger] request:GET urlString:@"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1" parameters:nil finish:^(id response, NSError *error) {
+
+
+- (NSString *)getURLStringWithChannelIndex:(NSInteger)channelIndex{
+    switch (channelIndex) {
+        case 0:
+            return @"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1";
+            break;
+        case 1:
+            return @"http://api.smzdm.com/v1/youhui/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1";
+            break;
+        case 2:
+            return @"http://api.smzdm.com/v1/haitao/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1";
+            break;
+        case 3:
+            return @"http://api.smzdm.com/v1/yuanchuang/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1";
+            break;
+        case 4:
+            return @"http://api.smzdm.com/v1/yuanchuang/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1";
+            break;
+        case 5:
+            return @"http://api.smzdm.com/v1/news/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1";
+            break;
+        default:
+            break;
+    }
+    return nil;
+}
+
+- (void)loadDataWithChannelIndex:(NSInteger)channelIndex{
+    
+    NSString *urlStr = [self getURLStringWithChannelIndex:channelIndex];
+    
+    [[SMNetWorkTools shareManger] request:GET urlString:urlStr parameters:nil finish:^(id response, NSError *error) {
         if (error) {
             return;
         }
@@ -159,7 +193,12 @@
         });
         
     }];
+
 }
 
+//- (void)hehe:(NSNotification *)noti{
+//    NSIndexPath *indexPath = noti.object;
+//    self.currentRow = indexPath.row;
+//}
 
 @end

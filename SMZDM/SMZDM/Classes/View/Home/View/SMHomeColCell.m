@@ -29,4 +29,9 @@
     return self;
 }
 
+- (void)setCurrentRow:(NSInteger)currentRow{
+    _currentRow = currentRow;
+    self.homeTableView.currentRow = currentRow;
+}
+
 @end

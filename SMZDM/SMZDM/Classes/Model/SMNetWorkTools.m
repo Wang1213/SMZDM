@@ -12,6 +12,7 @@
 #import "SMNetWorkTools.h"
 #import "AFNetworking.h"
 
+//封装网络工具类
 @implementation SMNetWorkTools
 
 + (instancetype)shareManger{
@@ -41,7 +42,6 @@
     }else if (method == POST){
         [self POST:urlString parameters:parameters progress:nil success:success failure:failure];
     }
-    
 }
 
 @end
