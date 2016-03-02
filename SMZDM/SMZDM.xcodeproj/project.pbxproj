@@ -27,6 +27,7 @@
 		21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = 21BE937A1C65FB91007CB5DF /* UIBarButtonItem+convenience.m */; };
 		21D667C21C84C97000712BEF /* SMHomeHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D667C11C84C97000712BEF /* SMHomeHeaderCell.m */; };
 		21D667CB1C84CCC100712BEF /* SMHomeScrollHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D667CA1C84CCC100712BEF /* SMHomeScrollHeaderView.m */; };
+		21D667D21C86C84A00712BEF /* SMNetWorkTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D667D11C86C84A00712BEF /* SMNetWorkTools.m */; };
 		21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */; };
 		21E0D1901C7C071A00AC6D5D /* SMHomeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21E0D18F1C7C071A00AC6D5D /* SMHomeTableView.m */; };
 		21FAA0681C70A44100E7F239 /* SMTopBarBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 21FAA0671C70A44100E7F239 /* SMTopBarBottomView.m */; };
@@ -77,6 +78,8 @@
 		21D667C11C84C97000712BEF /* SMHomeHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeHeaderCell.m; sourceTree = "<group>"; };
 		21D667C91C84CCC100712BEF /* SMHomeScrollHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeScrollHeaderView.h; sourceTree = "<group>"; };
 		21D667CA1C84CCC100712BEF /* SMHomeScrollHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeScrollHeaderView.m; sourceTree = "<group>"; };
+		21D667D01C86C84A00712BEF /* SMNetWorkTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SMNetWorkTools.h; path = ../Model/SMNetWorkTools.h; sourceTree = "<group>"; };
+		21D667D11C86C84A00712BEF /* SMNetWorkTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SMNetWorkTools.m; path = ../Model/SMNetWorkTools.m; sourceTree = "<group>"; };
 		21DB7BAE1C7187BC0071AFE3 /* SMHomeColView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeColView.h; sourceTree = "<group>"; };
 		21DB7BAF1C7187BC0071AFE3 /* SMHomeColView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMHomeColView.m; sourceTree = "<group>"; };
 		21E0D18E1C7C071A00AC6D5D /* SMHomeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMHomeTableView.h; sourceTree = "<group>"; };
@@ -194,6 +197,8 @@
 				217F3DB31C69E711004E265D /* PrefixHeader.pch */,
 				21854D3A1C83757600EEACB8 /* SMMixButtom.h */,
 				21854D3B1C83757600EEACB8 /* SMMixButtom.m */,
+				21D667D01C86C84A00712BEF /* SMNetWorkTools.h */,
+				21D667D11C86C84A00712BEF /* SMNetWorkTools.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -429,6 +434,7 @@
 				21BE937B1C65FB91007CB5DF /* UIBarButtonItem+convenience.m in Sources */,
 				21BE936C1C63409D007CB5DF /* SMTabBar.m in Sources */,
 				21DB7BB01C7187BC0071AFE3 /* SMHomeColView.m in Sources */,
+				21D667D21C86C84A00712BEF /* SMNetWorkTools.m in Sources */,
 				21854D421C842D4F00EEACB8 /* SMScrollHeaderModel.m in Sources */,
 				21BE93691C620851007CB5DF /* SMProfileController.m in Sources */,
 				21E0D1901C7C071A00AC6D5D /* SMHomeTableView.m in Sources */,

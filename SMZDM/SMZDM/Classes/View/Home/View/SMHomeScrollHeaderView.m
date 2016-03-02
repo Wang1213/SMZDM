@@ -39,6 +39,7 @@
 }
 
 - (void)setupUI{
+    
     self.imageView = [[UIImageView alloc] init];
     self.imageView.image = [UIImage imageNamed:@"noImage_defaultTopicDetail_big"];
     [self addSubview:self.imageView];
@@ -48,6 +49,7 @@
 - (void)setModel:(SMScrollHeaderModel *)model{
     _model = model;
     [self reloadData];
+    
 }
 
 - (void)reloadData{

@@ -12,6 +12,7 @@
 #import "UIView+Frame.h"
 #import "SMScrollHeaderModel.h"
 #import "SMHomeHeaderCell.h"
+#import "SMNetWorkTools.h"
 
 #define HomeCellID @"SMHomeCell"
 #define HomeHeaderCellID @"HomeHeaderCellID"
@@ -31,7 +32,8 @@
     self.dataSource = self;
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
 
-    [self getDataWithUrlString:@"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1"];
+    //[self getDataWithUrlString:@"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1"];
+    [self getData];
     
     [self setupUI];
     
@@ -133,6 +135,30 @@
         }
     }] resume];
     
+}
+
+- (void)getData{
+    [[SMNetWorkTools shareManger] request:GET urlString:@"http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=1" parameters:nil finish:^(id response, NSError *error) {
+        if (error) {
+            return;
+        }
+        NSDictionary *tData = response[@"data" ];
+        
+        NSArray *tempArray = tData[@"rows"];
+        NSMutableArray *array = [NSMutableArray array];
+        
+        for (NSDictionary *dict in tempArray) {
+            SMArticleModel *articleModel = [SMArticleModel articleWithDict:dict];
+            [array addObject:articleModel];
+        }
+        
+        self.dataArray = array;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadData];
+        });
+        
+    }];
 }
 
 

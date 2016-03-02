@@ -133,4 +133,18 @@ static NSString * const HomeColCellID =  @"HOME_COLLECTION_CELL";
     }
 }
 
+//- (NSString *)getChannelName:(NSInteger)row{
+//    
+//    switch (row) {
+//        case 1:
+//            return @"youhui";//http://api.smzdm.com/v1/home/articles?f=iphone&have_zhuanti=1&imgmode=0&limit=20&v=6.1.2&weixin=0
+//            break;
+//        case 2:
+//            return @"youhui";//http://api.smzdm.com/v1/youhui/articles?f=iphone&imgmode=0&limit=20&v=6.1.2&weixin=1
+//            break;
+//        default:
+//            break;
+//    }
+//}
+
 @end
